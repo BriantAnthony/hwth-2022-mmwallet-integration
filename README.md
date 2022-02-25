@@ -2,6 +2,8 @@
 
 This project is a guided walkthrough on how to integrate MetaMask into an existing application, bootstraped from create-react-app. These same steps should work on any react-based codebase.
 
+**Note: For the maximum benefit, please try not to clone this repo before completing the tutorial below.**
+
 ## Pre-requisites
 
 In order to proceed, you need to:
