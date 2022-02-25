@@ -1,46 +1,89 @@
-# Getting Started with Create React App
+# Getting Started 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a guided walkthrough on how to integrate MetaMask into an existing application, bootstraped from create-react-app. These same steps should work on any react-based codebase.
 
-## Available Scripts
+## Pre-requisites
 
-In the project directory, you can run:
+In order to proceed, you need to:
+1. Install the MetaMask browser extension from https://metamask.io/download
+2. Check your nodeJS version and ensure it is at least version 14 with: ```node -v```
+3. Install yarn globally with: ```npm install -g yarn```
 
-### `npm start`
+### Let's Begin
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Let's use create-react-app to bootstrap our React app:
+```npx create-react-app metamask-demo --template typescript```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+*Note: Make sure yarn is installed and your nodeJS version is at least 14*.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Delete the node_modules folder and package-lock.json file.
 
-### `npm run build`
+`rm -rf node_modules package-lock.json`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Install dependencies using yarn
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`yarn install`
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Install a few more libraries
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`yarn add @chakra-ui/react @emotion/react @emotion/styled framer-motion @usedapp/core`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Set up useDApp (https://usedapp.io/)
 
-## Learn More
+Replace the existing main index.tsx file with the following:
+```
+// index.tsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+// Import DAppProvider
+import { DAppProvider } from '@usedapp/core';
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+ReactDOM.render(
+  <React.StrictMode>
+    <DAppProvider config={{}}>
+      <App />
+    </DAppProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+```
+
+### Copy Set up useDApp (https://usedapp.io/)
+
+Replace the existing main index.tsx file with the following:
+```
+// index.tsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+// Import DAppProvider
+import { DAppProvider } from '@usedapp/core';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <DAppProvider config={{}}>
+      <App />
+    </DAppProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+```
